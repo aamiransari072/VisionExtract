@@ -1,42 +1,27 @@
-import os
-
-
-
 class Configuration:
     def __init__(self):
         pass
 
-
     def get_prompt(self):
         prompt = f"""
-                 You are an AI specialized in extracting structured data from invoices. 
-                Your task is to extract key details from the given text and return ONLY a JSON output.
+        You are an AI specialized in extracting structured data from various types of invoices. 
+        Your task is to accurately extract key details from the given invoice text and return ONLY a valid JSON object.
 
-                Extract the following fields:
-                - **invoice_number**: The invoice number.
-                - **date**: The invoice date.
-                - **vendor**: The vendor name.
-                - **total_amount**: The total invoice amount.
-                - **items**: A list of items, where each item has:
-                - **name**: The name of the item.
-                - **quantity**: The quantity of the item.
-                - **price**: The price of the item.
+        The following fields must be extracted:
+        - **invoice_number**: The unique identifier for the invoice.
+        - **date**: The date the invoice was issued (in any recognizable format).
+        - **vendor**: The name of the company or individual that issued the invoice.
+        - **total_amount**: The total amount due on the invoice (can include currency symbols).
+        - **items**: A list of items on the invoice. Each item should have:
+          - **name**: The name or description of the item.
+          - **quantity**: The quantity of the item (could be in numeric or text format like "2 pcs").
+          - **price**: The unit price of the item (can include currency symbols).
 
-                Output Format (JSON)
-                Return ONLY a valid JSON object without any additional text no preamble no markdown only Valid JSON.
+        Notes:
+        - Ensure the output is a valid JSON object.
+        - Return only the JSON object, with no additional text, explanations, or markdown.
+        - Handle all formats of dates, prices, and quantities, and be flexible with different representations of the invoice fields.
 
-
-                
-                {{
-                "invoice_number": "INV-12345",
-                "date": "2024-02-02",
-                "vendor": "ABC Corp",
-                "total_amount": "$500",
-                "items": [
-                    {{"name": "Laptop", "quantity": 1, "price": "$1200"}},
-                    {{"name": "Mouse", "quantity": 2, "price": "$50"}}
-                ]
-                }}
-
-                """
+        Only return the JSON object. No additional information or formatting.
+        """
         return prompt

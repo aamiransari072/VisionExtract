@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 from src.components.data_transformation import DataTransformation
 
-class TraningPipeline:
+class TrainingPipeline:
     def __init__(self):
         self.modeltrainer = ModelTraining()
         self.transformer = DataTransformation()
