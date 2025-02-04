@@ -14,6 +14,8 @@
 - It will give Structured JSON resposne 
 
 
+### Project Architecture
+![VisionExtract Workflow](flowchart/VisionExtract.drawio.png)
 
 
 
